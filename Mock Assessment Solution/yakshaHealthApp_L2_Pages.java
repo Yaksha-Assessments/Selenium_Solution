@@ -68,14 +68,6 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 	public yakshaHealthApp_L2_Pages(WebDriver driver) {
 		super(driver);
 	}
-	
-	/**@Test1.1
-	 * about this method loginToTheYakshahealthApp()
-	 * @param : Map<String, String>
-	 * @description : login to the yakshaHealth app by providing valid user name and password
-	 * @return : boolean
-	 * @author : Yaksha
-	 */
 	/**@Test1.1
 	 * about this method loginTohealthAppByGivenValidCredetial() 
 	 * @param : Map<String, String>
