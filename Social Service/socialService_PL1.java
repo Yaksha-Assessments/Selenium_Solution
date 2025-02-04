@@ -230,29 +230,6 @@ public class socialService_Pages extends StartupPage {
 	}
 
 	/**@Test6
-	 * about this method selectIndiaFromCountryDropdownAndVerifySelection() 
-	 * @param : get the data from Excel file as type Map<String, String> expectedData
-	 * @description : it will select the country as per Excel expected data
-	 * @return : String
-	 * @author : YAKSHA
-	 */
-	public String selectIndiaFromCountryDropdownAndVerifySelection(Map<String, String> expectedData) throws Exception {
-
-		String selectedCountryName = "" ;
-
-		//		commonEvents.click(countryDropdownMenuElement);
-
-		try {
-			commonEvents.selectByVisibleText(countryDropdownMenuElement, expectedData.get("selectedCountryName"));
-			selectedCountryName = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownMenuElement, "elementName", "pageName");
-			System.out.println("first selected option from country dropdown : " + selectedCountryName );
-			return selectedCountryName;
-		}catch(Exception e) {
-			throw e;
-		}	
-	}
-
-	/**@Test7
 	 * about this method scrollToButtomOfThePageAndVerifyCloseButtonIsPresent() 
 	 * @param : null
 	 * @description : scroll to the bottom of the page and verify that "Close" button is present or not.
@@ -282,7 +259,7 @@ public class socialService_Pages extends StartupPage {
 		return closeButtoIsDisplayed;
 	}
 
-	/**@Test8
+	/**@Test7
 	 * about this method validateWarnningMessageOfNewSSUPatientRegistrationForms() 
 	 * @param : Map<String, String>
 	 * @description : Validate the warnning message for the membership dropdown.
@@ -300,5 +277,34 @@ public class socialService_Pages extends StartupPage {
 			throw e;
 		}
 		return warningMessageValue;
+	}
+
+	/**@Test8
+	 * about this method verifyTextboxIsPresentBySelectingYesFromHasTargetGroupCertificateDropdown() 
+	 * @param : get the data from Excel file as type Map<String, String> expectedData
+	 * @description : it will select the country as per Excel expected data
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyTextboxIsPresentBySelectingYesFromHasTargetGroupCertificateDropdown(Map<String, String> expectedData) throws Exception {
+
+		String HasTargetGroupCertificateDropdownValue = "" ;
+
+		//		commonEvents.click(countryDropdownMenuElement);
+
+		try {
+			if(commonEvents.isDisplayed(hasTG_certificateDropdown)) {
+				commonEvents.selectByVisibleText(hasTG_certificateDropdown, expectedData.get("HasTargetGroupCertificate?Yes"));
+
+				HasTargetGroupCertificateDropdownValue = commonEvents.getFirstSelectedOptionFromDropdown(hasTG_certificateDropdown, "elementName", "pageName");
+				System.out.println("first selected option from Has Target Group Certificate dropdown : " + HasTargetGroupCertificateDropdownValue );
+
+				commonEvents.sendKeys(targetGroupCertificateTypeTextbox,expectedData.get("targetGroupCertificateType"));	
+				commonEvents.sendKeys(certificateNoTextbox,expectedData.get("certificateNo"));
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return HasTargetGroupCertificateDropdownValue;
 	}
 }
