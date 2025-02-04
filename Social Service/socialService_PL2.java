@@ -285,29 +285,6 @@ public class socialService_Pages extends StartupPage {
 	}
 
 	/**@Test6
-	 * about this method selectIndiaFromCountryDropdownAndVerifySelection() 
-	 * @param : get the data from Excel file as type Map<String, String> expectedData
-	 * @description : it will select the country as per Excel expected data
-	 * @return : String
-	 * @author : YAKSHA
-	 */
-	public String selectIndiaFromCountryDropdownAndVerifySelection(Map<String, String> expectedData) throws Exception {
-
-		String selectedCountryName = "" ;
-
-		//		commonEvents.click(countryDropdownMenuElement);
-
-		try {
-			commonEvents.selectByVisibleText(countryDropdownMenuElement, expectedData.get("selectedCountryName"));
-			selectedCountryName = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownMenuElement, "elementName", "pageName");
-			System.out.println("first selected option from country dropdown : " + selectedCountryName );
-			return selectedCountryName;
-		}catch(Exception e) {
-			throw e;
-		}	
-	}
-
-	/**@Test7
 	 * about this method scrollToButtomOfThePageAndVerifyCloseButtonIsPresent() 
 	 * @param : null
 	 * @description : scroll to the bottom of the page and verify that "Close" button is present or not.
@@ -337,7 +314,7 @@ public class socialService_Pages extends StartupPage {
 		return closeButtoIsDisplayed;
 	}
 
-	/**@Test8
+	/**@Test7
 	 * about this method validateWarnningMessageOfNewSSUPatientRegistrationForms() 
 	 * @param : Map<String, String>
 	 * @description : Validate the warnning message for the membership dropdown.
@@ -357,7 +334,7 @@ public class socialService_Pages extends StartupPage {
 		return warningMessageValue;
 	}
 
-	/**@Test9
+	/**@Test8
 	 * about this method verifyTextboxIsPresentBySelectingYesFromHasTargetGroupCertificateDropdown() 
 	 * @param : get the data from Excel file as type Map<String, String> expectedData
 	 * @description : it will select the country as per Excel expected data
@@ -386,7 +363,7 @@ public class socialService_Pages extends StartupPage {
 		return HasTargetGroupCertificateDropdownValue;
 	}
 
-	/**@Test10
+	/**@Test9
 	 * about this method getPlaceHolderNameVerifyPlaceHolderNameOfAddress() 
 	 * @param : Map<String, String>
 	 * @description : get the place holder name of address textfiled and verify  the place holder name.
@@ -408,7 +385,7 @@ public class socialService_Pages extends StartupPage {
 		return placeHolderValue;
 	}
 
-	/**@Test11
+	/**@Test10
 	 * about this method closeNewSSUPatientRegistrationPopupByUsingJsExecutor() 
 	 * @param : null
 	 * @description : Close this "New SSU Patient Registration" popup by using javaScript.
@@ -429,7 +406,7 @@ public class socialService_Pages extends StartupPage {
 		return IsDisplayed;
 	}
 
-	/**@Test12
+	/**@Test11
 	 * about this method closeNewSSUPatientRegistrationPopupByUsingJsExecutor() 
 	 * @param : null
 	 * @description : Close this "New SSU Patient Registration" popup by using javaScript.
@@ -467,7 +444,7 @@ public class socialService_Pages extends StartupPage {
 		return successfullyNavigation;
 	}
 
-	/**@Test13
+	/**@Test12
 	 * about this method getDataFromTable() 
 	 * @param : null
 	 * @description : it will fetch the data from the table
@@ -493,7 +470,7 @@ public class socialService_Pages extends StartupPage {
 		return cuttonSubCategoryName;
 	}
 
-	/**@Test14
+	/**@Test13
 	 * about this method verifyRadioButton() 
 	 * @param : null
 	 * @description :
@@ -531,7 +508,7 @@ public class socialService_Pages extends StartupPage {
 		return verifyRadioButton;
 	}
 
-	/**@Test15
+	/**@Test14
 	 * about this method verifyCheckbox() 
 	 * @param : null
 	 * @description :
@@ -566,6 +543,32 @@ public class socialService_Pages extends StartupPage {
 			throw e;
 		}	
 		return verifyCheckbox;
+	}
+
+	/**@Test15
+	 * about this method verifyToolTipOfAnElement()
+	 * @param : null
+	 * @description :go to appointmentTab and verify the TOOLTIP value/text
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyToolTipOfAnElement() throws Exception {
+		String tooltipText = "";
+		try {
+			commonEvents.click(xButton);
+			commonEvents.click(appointmentModule);
+			Thread.sleep(3000);
+			commonEvents.click(newOneSelectCounterElement);
+			Thread.sleep(3000);
+			commonEvents.waitTillElementVisible(keyboardButtonElement,50);
+			commonEvents.mouseHoverClick(keyboardButtonElement);
+			commonEvents.waitTillElementVisible(altPlusNtooltipMessageElement,50);
+			tooltipText = commonEvents.getText(altPlusNtooltipMessageElement);
+			System.out.println("New Patient Tooltip text value is:" + tooltipText );
+		}catch(Exception e) {
+			throw e;
+		}
+		return tooltipText;
 	}
 
 }
